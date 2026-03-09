@@ -1,0 +1,5 @@
+def format_code(code):
+    try:
+        return black.format_str(code, mode=black.FileMode())
+    except Exception:
+        return autopep8.fix_code(code)

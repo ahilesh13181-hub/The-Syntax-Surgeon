@@ -1,0 +1,18 @@
+def generate_response(user_message, temperature, max_tokens, top_p):
+    conversation_history.append({"role": "user", "content": user_message})
+
+    response = model_pipe(
+        user_message,
+        max_new_tokens=int(max_tokens),
+        temperature=temperature,
+        do_sample=True,
+        top_p=top_p
+    )
+
+    assistant_reply = response[0]["generated_text"]
+
+    conversation_history.append(
+        {"role": "assistant", "content": assistant_reply}
+    )
+
+    return assistant_reply

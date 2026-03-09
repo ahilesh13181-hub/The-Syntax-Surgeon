@@ -1,0 +1,5 @@
+def download_txt():
+    with open("chat_history.txt", "w", encoding="utf-8") as f:
+        for msg in conversation_history:
+            f.write(f"{msg['role'].upper()}: {msg['content']}\n\n")
+    return "chat_history.txt"

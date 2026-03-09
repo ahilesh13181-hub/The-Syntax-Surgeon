@@ -1,0 +1,4 @@
+def fix_code_indentation(code):
+    lines = code.splitlines()
+    fixed_lines = [line.rstrip().replace("\t", "    ") for line in lines]
+    return "\n".join(fixed_lines)

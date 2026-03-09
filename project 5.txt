@@ -1,0 +1,6 @@
+def check_syntax(code):
+    try:
+        ast.parse(code)
+        return True, None
+    except SyntaxError as e:
+        return False, f"Syntax Error (line {e.lineno}): {e.msg}"

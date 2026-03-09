@@ -1,0 +1,15 @@
+def detect_python_code(text):
+    patterns = [
+        r'def\s+\w+\s*\(',
+        r'class\s+\w+',
+        r'import\s+\w+',
+        r'from\s+\w+\s+import',
+        r'if\s+.*:',
+        r'for\s+.*\s+in\s+',
+        r'while\s+.*:'
+    ]
+
+    for pattern in patterns:
+        if re.search(pattern, text):
+            return True
+    return False

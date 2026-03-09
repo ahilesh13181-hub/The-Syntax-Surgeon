@@ -1,0 +1,12 @@
+def download_pdf():
+    doc = SimpleDocTemplate("chat_history.pdf")
+    elements = []
+    styles = getSampleStyleSheet()
+
+    for msg in conversation_history:
+        text = f"{msg['role'].upper()}: {msg['content']}"
+        elements.append(Paragraph(text, styles["Normal"]))
+        elements.append(Spacer(1, 12))
+
+    doc.build(elements)
+    return "chat_history.pdf"

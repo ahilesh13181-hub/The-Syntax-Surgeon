@@ -1,0 +1,15 @@
+def fix_code_brackets(code):
+    brackets = {"(": ")", "[": "]", "{": "}"}
+    stack = []
+
+    for char in code:
+        if char in brackets:
+            stack.append(brackets[char])
+        elif char in brackets.values():
+            if stack and char == stack[-1]:
+                stack.pop()
+
+    while stack:
+        code += stack.pop()
+
+    return code

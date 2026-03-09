@@ -1,0 +1,19 @@
+with gr.Blocks() as demo:
+    chatbot = gr.Chatbot(height=400)
+    msg = gr.Textbox(lines=2, placeholder="Type message or paste code...")
+    temp = gr.Slider(0.1, 1.0, value=0.7, label="Temperature")
+    max_tokens = gr.Slider(50, 1024, value=256, step=50, label="Max Tokens")
+    top_p = gr.Slider(0.1, 1.0, value=0.95, label="Top P")
+
+    send = gr.Button("Send")
+
+    def chat(user_input, temperature, max_tokens, top_p):
+        if detect_python_code(user_input):
+            reply = fix_python_code(user_input)
+        else:
+            reply = generate_response(user_input, temperature, max_tokens, top_p)
+        return reply
+
+    send.click(chat, [msg, temp, max_tokens, top_p], chatbot)
+
+demo.launch(share=True)

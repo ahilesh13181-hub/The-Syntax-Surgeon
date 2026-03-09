@@ -1,0 +1,7 @@
+device = 0 if torch.cuda.is_available() else -1
+
+model_pipe = pipeline(
+    "text-generation",
+    model=ChatbotConfig.MODEL_NAME,
+    device=device
+)

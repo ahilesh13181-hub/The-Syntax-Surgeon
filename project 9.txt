@@ -1,0 +1,10 @@
+def fix_python_code(code):
+    code = fix_code_indentation(code)
+    code = fix_code_brackets(code)
+
+    valid, error = check_syntax(code)
+    if not valid:
+        return f"⚠️ {error}"
+
+    formatted = format_code(code)
+    return formatted
